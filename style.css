@@ -364,4 +364,36 @@ body {
     justify-content: center;
     flex-wrap: wrap;
   }
+
+/* =========================
+   CURSOR GLOW EFFECT
+========================= */
+.cursor-glow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 220px;
+  height: 220px;
+  pointer-events: none;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(127, 0, 255, 0.35),
+    rgba(0, 198, 255, 0.15),
+    transparent 70%
+  );
+  transform: translate(-50%, -50%);
+  filter: blur(40px);
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Disable on touch devices */
+@media (hover: none) {
+  .cursor-glow {
+    display: none;
+  }
+}
+
 }
