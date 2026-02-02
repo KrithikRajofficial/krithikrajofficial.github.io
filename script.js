@@ -61,21 +61,39 @@ document.addEventListener("DOMContentLoaded", () => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add("show");
-          observer.unobserve(entry.target); // reveal once
+          observer.unobserve(entry.target); // animate once
         }
       });
     },
     { threshold: 0.2 }
   );
 
-  // Skill cards reveal
+  // Reveal skill cards
   document.querySelectorAll(".skill-card").forEach(card => {
     observer.observe(card);
   });
 
-  // Project cards reveal
+  // Reveal project cards
   document.querySelectorAll(".project-card").forEach(card => {
     observer.observe(card);
   });
+
+
+  /* ==============================
+     CURSOR GLOW FOLLOW EFFECT
+  ============================== */
+  const cursor = document.querySelector(".cursor-glow");
+
+  if (cursor) {
+    document.addEventListener("mousemove", (e) => {
+      cursor.style.left = `${e.clientX}px`;
+      cursor.style.top = `${e.clientY}px`;
+      cursor.style.opacity = "1";
+    });
+
+    document.addEventListener("mouseleave", () => {
+      cursor.style.opacity = "0";
+    });
+  }
 
 });
