@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* ==============================
-     SCROLL REVEAL (SKILLS)
+     SCROLL REVEAL (SKILLS + PROJECTS)
   ============================== */
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
@@ -61,7 +61,13 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }, { threshold: 0.2 });
 
+  // Reveal skill cards
   document.querySelectorAll(".skill-card").forEach(card => {
+    observer.observe(card);
+  });
+
+  // Reveal project cards
+  document.querySelectorAll(".project-card").forEach(card => {
     observer.observe(card);
   });
 
