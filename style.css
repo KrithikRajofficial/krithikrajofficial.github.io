@@ -248,20 +248,6 @@ body {
 }
 
 /* =========================
-   RESPONSIVE
-========================= */
-@media (max-width: 900px) {
-  .hero {
-    flex-direction: column-reverse;
-    text-align: center;
-    gap: 40px;
-  }
-
-  .hero-buttons {
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-/* =========================
    PROJECTS SECTION
 ========================= */
 .projects {
@@ -275,7 +261,6 @@ body {
   gap: 35px;
 }
 
-/* Project Card */
 .project-card {
   position: relative;
   height: 320px;
@@ -284,18 +269,21 @@ body {
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid #7f00ff33;
   cursor: pointer;
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.project-card.show {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.7s ease;
 }
 
 /* Placeholder image */
 .project-image.placeholder {
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    135deg,
-    #1a1a2e,
-    #16213e,
-    #1a1a2e
-  );
+  background: linear-gradient(135deg, #1a1a2e, #16213e, #1a1a2e);
 }
 
 /* Overlay */
@@ -317,7 +305,6 @@ body {
   opacity: 1;
 }
 
-/* Overlay text */
 .project-overlay h3 {
   font-size: 1.3rem;
   margin-bottom: 10px;
@@ -330,7 +317,6 @@ body {
   margin-bottom: 20px;
 }
 
-/* Links */
 .project-links {
   display: flex;
   gap: 20px;
@@ -352,5 +338,18 @@ body {
   box-shadow: 0 0 20px #7f00ff99;
 }
 
-   
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 900px) {
+  .hero {
+    flex-direction: column-reverse;
+    text-align: center;
+    gap: 40px;
+  }
+
+  .hero-buttons {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
 }
