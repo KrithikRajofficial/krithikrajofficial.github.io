@@ -15,6 +15,7 @@ body {
   background: #0b0b0f;
   color: #ffffff;
   overflow-x: hidden;
+  transition: background 0.4s ease, color 0.4s ease;
 }
 
 /* =========================
@@ -278,14 +279,12 @@ body {
   transition: all 0.7s ease;
 }
 
-/* Placeholder image */
 .project-image.placeholder {
   width: 100%;
   height: 100%;
   background: linear-gradient(135deg, #1a1a2e, #16213e, #1a1a2e);
 }
 
-/* Overlay */
 .project-overlay {
   position: absolute;
   inset: 0;
@@ -304,54 +303,16 @@ body {
   opacity: 1;
 }
 
-.project-overlay h3 {
-  font-size: 1.3rem;
-  margin-bottom: 10px;
-  color: #b983ff;
-}
-
-.project-overlay p {
-  font-size: 0.95rem;
-  color: #ccccd6;
-  margin-bottom: 20px;
-}
-
-.project-links {
-  display: flex;
-  gap: 20px;
-}
-
-.project-links a {
-  padding: 10px 18px;
-  border-radius: 20px;
-  border: 1px solid #7f00ff;
-  color: #7f00ff;
-  text-decoration: none;
-  font-weight: 600;
-  transition: all 0.3s ease;
-}
-
-.project-links a:hover {
-  background: #7f00ff;
-  color: white;
-  box-shadow: 0 0 20px #7f00ff99;
-}
-
 /* =========================
-   CONTACT SECTION
+   CONTACT
 ========================= */
 .contact {
   padding: 100px 10%;
   text-align: center;
 }
 
-.contact a {
-  text-decoration: none;
-  font-weight: 600;
-}
-
 /* =========================
-   PARTICLE BACKGROUND
+   PARTICLES
 ========================= */
 #particles {
   position: fixed;
@@ -366,8 +327,6 @@ body {
 ========================= */
 .cursor-glow {
   position: fixed;
-  top: 0;
-  left: 0;
   width: 220px;
   height: 220px;
   pointer-events: none;
@@ -385,11 +344,49 @@ body {
   transition: opacity 0.3s ease;
 }
 
-/* Disable cursor glow on touch devices */
-@media (hover: none) {
-  .cursor-glow {
-    display: none;
-  }
+/* =========================
+   THEME TOGGLE
+========================= */
+.theme-toggle {
+  background: none;
+  border: 2px solid #7f00ff;
+  color: #7f00ff;
+  padding: 8px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+  background: #7f00ff;
+  color: #ffffff;
+}
+
+/* =========================
+   LIGHT MODE
+========================= */
+body.light {
+  background: #f5f6fa;
+  color: #0b0b0f;
+}
+
+body.light .navbar {
+  background: rgba(245, 246, 250, 0.85);
+}
+
+body.light .hero {
+  background:
+    radial-gradient(circle at top left, #7f00ff22, transparent 40%),
+    radial-gradient(circle at bottom right, #00c6ff22, transparent 40%);
+}
+
+body.light .skill-card,
+body.light .project-card {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+body.light .project-overlay {
+  background: rgba(245, 246, 250, 0.95);
 }
 
 /* =========================
@@ -403,81 +400,6 @@ body {
   }
 
   .hero-buttons {
-/* =========================
-   THEME TOGGLE BUTTON
-========================= */
-.theme-toggle {
-  background: none;
-  border: 2px solid #7f00ff;
-  color: #7f00ff;
-  padding: 8px 14px;
-  border-radius: 20px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.theme-toggle:hover {
-  background: #7f00ff;
-  color: #ffffff;
-}
-
-/* =========================
-   LIGHT MODE STYLES
-========================= */
-body.light {
-  background: #f5f6fa;
-  color: #0b0b0f;
-}
-
-body.light .navbar {
-  background: rgba(245, 246, 250, 0.85);
-}
-
-body.light .nav-links a {
-  color: #333333;
-}
-
-body.light .nav-links a:hover {
-  color: #7f00ff;
-}
-
-body.light .hero {
-  background:
-    radial-gradient(circle at top left, #7f00ff22, transparent 40%),
-    radial-gradient(circle at bottom right, #00c6ff22, transparent 40%);
-}
-
-body.light .hero-content p,
-body.light .project-overlay p {
-  color: #333333;
-}
-
-body.light .section-title {
-  color: #5a00cc;
-}
-
-body.light .skill-card,
-body.light .project-card {
-  background: rgba(0, 0, 0, 0.04);
-  border-color: #7f00ff55;
-}
-
-body.light .project-overlay {
-  background: rgba(245, 246, 250, 0.95);
-}
-
-/* Cursor glow adapts in light mode */
-body.light .cursor-glow {
-  background: radial-gradient(
-    circle,
-    rgba(0, 198, 255, 0.35),
-    rgba(127, 0, 255, 0.15),
-    transparent 70%
-  );
-}
-
-     
     justify-content: center;
     flex-wrap: wrap;
   }
