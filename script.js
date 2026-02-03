@@ -1,61 +1,130 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  /* Typing */
+  /* ==============================
+     TYPING ANIMATION
+  ============================== */
   const roles = [
     "Robotics & AI Engineer",
     "ROS • Computer Vision • Autonomous Systems",
     "Building Intelligent Machines"
   ];
-  let i = 0, j = 0, del = false;
-  const el = document.getElementById("typing");
 
-  function type() {
-    if (!el) return;
-    const text = roles[i];
-    el.textContent = text.substring(0, j);
+  let roleIndex = 0;
+  let charIndex = 0;
+  let deleting = false;
 
-    if (!del) j++; else j--;
+  const typingElement = document.getElementById("typing");
 
-    if (j > text.length + 8) del = true;
-    if (j === 0 && del) { del = false; i = (i + 1) % roles.length; }
+  function typeLoop() {
+    const current = roles[roleIndex];
 
-    setTimeout(type, del ? 40 : 80);
+    if (!deleting && charIndex <= current.length) {
+      typingElement.textContent = current.substring(0, charIndex++);
+    } else if (deleting && charIndex >= 0) {
+      typingElement.textContent = current.substring(0, charIndex--);
+    }
+
+    if (charIndex === current.length + 8) deleting = true;
+    if (deleting && charIndex === 0) {
+      deleting = false;
+      roleIndex = (roleIndex + 1) % roles.length;
+    }
+
+    setTimeout(typeLoop, deleting ? 40 : 80);
   }
-  type();
 
-  /* Cursor Glow */
+  if (typingElement) typeLoop();
+
+  /* ==============================
+     SCROLL REVEAL
+  ============================== */
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+
+  document.querySelectorAll(".skill-card, .project-card")
+    .forEach(el => observer.observe(el));
+
+  /* ==============================
+     CURSOR GLOW
+  ============================== */
   const cursor = document.querySelector(".cursor-glow");
-  document.addEventListener("mousemove", e => {
-    cursor.style.left = e.clientX + "px";
-    cursor.style.top = e.clientY + "px";
-  });
+  if (cursor) {
+    document.addEventListener("mousemove", e => {
+      cursor.style.left = `${e.clientX}px`;
+      cursor.style.top = `${e.clientY}px`;
+      cursor.style.opacity = "1";
+    });
 
-  /* Particles */
+    document.addEventListener("mouseleave", () => {
+      cursor.style.opacity = "0";
+    });
+  }
+
+  /* ==============================
+     PARTICLES
+  ============================== */
   const canvas = document.getElementById("particles");
+  if (!canvas) return;
+
   const ctx = canvas.getContext("2d");
+  let w, h;
 
   function resize() {
-    canvas.width = innerWidth;
-    canvas.height = innerHeight;
+    w = canvas.width = window.innerWidth;
+    h = canvas.height = window.innerHeight;
   }
+
   resize();
   window.addEventListener("resize", resize);
 
-  const dots = Array.from({ length: 60 }, () => ({
-    x: Math.random() * canvas.width,
-    y: Math.random() * canvas.height,
-    r: Math.random() * 2 + 1
+  const particles = Array.from({ length: 60 }, () => ({
+    x: Math.random() * w,
+    y: Math.random() * h,
+    r: Math.random() * 1.5 + 0.5,
+    dx: (Math.random() - 0.5) * 0.3,
+    dy: (Math.random() - 0.5) * 0.3
   }));
 
   function animate() {
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-    dots.forEach(d => {
+    ctx.clearRect(0, 0, w, h);
+    particles.forEach(p => {
+      p.x += p.dx;
+      p.y += p.dy;
+      if (p.x < 0 || p.x > w) p.dx *= -1;
+      if (p.y < 0 || p.y > h) p.dy *= -1;
       ctx.beginPath();
-      ctx.arc(d.x,d.y,d.r,0,Math.PI*2);
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
       ctx.fillStyle = "rgba(127,0,255,0.4)";
       ctx.fill();
     });
     requestAnimationFrame(animate);
   }
+
   animate();
+
+  /* ==============================
+     THEME TOGGLE
+  ============================== */
+  const toggle = document.getElementById("themeToggle");
+
+  if (toggle) {
+    if (localStorage.getItem("theme") === "light") {
+      document.body.classList.add("light");
+      toggle.textContent = "☀️";
+    }
+
+    toggle.addEventListener("click", () => {
+      document.body.classList.toggle("light");
+      const isLight = document.body.classList.contains("light");
+      toggle.textContent = isLight ? "☀️" : "🌙";
+      localStorage.setItem("theme", isLight ? "light" : "dark");
+    });
+  }
+
 });
