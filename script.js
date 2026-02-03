@@ -1,145 +1,61 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  /* ==============================
-     TYPING ANIMATION (HERO)
-  ============================== */
+  /* Typing */
   const roles = [
     "Robotics & AI Engineer",
     "ROS • Computer Vision • Autonomous Systems",
     "Building Intelligent Machines"
   ];
+  let i = 0, j = 0, del = false;
+  const el = document.getElementById("typing");
 
-  let roleIndex = 0;
-  let charIndex = 0;
-  let deleting = false;
+  function type() {
+    if (!el) return;
+    const text = roles[i];
+    el.textContent = text.substring(0, j);
 
-  const typingElement = document.getElementById("typing");
+    if (!del) j++; else j--;
 
-  function typeLoop() {
-    const current = roles[roleIndex];
+    if (j > text.length + 8) del = true;
+    if (j === 0 && del) { del = false; i = (i + 1) % roles.length; }
 
-    if (!deleting && charIndex <= current.length) {
-      typingElement.textContent = current.substring(0, charIndex++);
-    } 
-    else if (deleting && charIndex >= 0) {
-      typingElement.textContent = current.substring(0, charIndex--);
-    }
-
-    if (charIndex === current.length + 10) deleting = true;
-
-    if (deleting && charIndex === 0) {
-      deleting = false;
-      roleIndex = (roleIndex + 1) % roles.length;
-    }
-
-    setTimeout(typeLoop, deleting ? 40 : 80);
+    setTimeout(type, del ? 40 : 80);
   }
+  type();
 
-  if (typingElement) typeLoop();
-
-
-  /* ==============================
-     SMOOTH SCROLL (ANCHORS)
-  ============================== */
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener("click", e => {
-      e.preventDefault();
-      const target = document.querySelector(anchor.getAttribute("href"));
-      if (target) {
-        target.scrollIntoView({ behavior: "smooth" });
-      }
-    });
-  });
-
-
-  /* ==============================
-     SCROLL REVEAL (SKILLS + PROJECTS)
-  ============================== */
-  const revealObserver = new IntersectionObserver(
-    entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("show");
-          revealObserver.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.2 }
-  );
-
-  document.querySelectorAll(".skill-card, .project-card").forEach(el => {
-    revealObserver.observe(el);
-  });
-
-
-  /* ==============================
-     CURSOR GLOW EFFECT
-  ============================== */
+  /* Cursor Glow */
   const cursor = document.querySelector(".cursor-glow");
+  document.addEventListener("mousemove", e => {
+    cursor.style.left = e.clientX + "px";
+    cursor.style.top = e.clientY + "px";
+  });
 
-  if (cursor) {
-    document.addEventListener("mousemove", e => {
-      cursor.style.left = `${e.clientX}px`;
-      cursor.style.top = `${e.clientY}px`;
-      cursor.style.opacity = "1";
-    });
-
-    document.addEventListener("mouseleave", () => {
-      cursor.style.opacity = "0";
-    });
-  }
-
-
-  /* ==============================
-     PARTICLE BACKGROUND (CANVAS)
-     — FIXED (NO BIG SHAPES)
-  ============================== */
+  /* Particles */
   const canvas = document.getElementById("particles");
-  if (!canvas) return;
-
   const ctx = canvas.getContext("2d");
-  let width, height;
 
-  function resizeCanvas() {
-    width = canvas.width = window.innerWidth;
-    height = canvas.height = window.innerHeight;
+  function resize() {
+    canvas.width = innerWidth;
+    canvas.height = innerHeight;
   }
+  resize();
+  window.addEventListener("resize", resize);
 
-  resizeCanvas();
-  window.addEventListener("resize", resizeCanvas);
+  const dots = Array.from({ length: 60 }, () => ({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    r: Math.random() * 2 + 1
+  }));
 
-  const particles = [];
-  const PARTICLE_COUNT = 70;
-
-  for (let i = 0; i < PARTICLE_COUNT; i++) {
-    particles.push({
-      x: Math.random() * width,
-      y: Math.random() * height,
-      r: Math.random() * 1.8 + 0.6,
-      dx: (Math.random() - 0.5) * 0.3,
-      dy: (Math.random() - 0.5) * 0.3
-    });
-  }
-
-  function drawParticles() {
-    ctx.clearRect(0, 0, width, height);
-
-    particles.forEach(p => {
-      p.x += p.dx;
-      p.y += p.dy;
-
-      if (p.x < 0 || p.x > width) p.dx *= -1;
-      if (p.y < 0 || p.y > height) p.dy *= -1;
-
+  function animate() {
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    dots.forEach(d => {
       ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fillStyle = "rgba(127, 0, 255, 0.45)";
+      ctx.arc(d.x,d.y,d.r,0,Math.PI*2);
+      ctx.fillStyle = "rgba(127,0,255,0.4)";
       ctx.fill();
     });
-
-    requestAnimationFrame(drawParticles);
+    requestAnimationFrame(animate);
   }
-
-  drawParticles();
-
+  animate();
 });
