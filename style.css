@@ -29,14 +29,14 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgba(10, 10, 20, 0.6);
+  background: rgba(10, 10, 20, 0.65);
   backdrop-filter: blur(12px);
   z-index: 1000;
 }
 
 .logo {
   font-weight: 700;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   color: #b983ff;
 }
 
@@ -50,7 +50,7 @@ body {
   text-decoration: none;
   color: #ffffffcc;
   font-weight: 500;
-  transition: color 0.3s;
+  transition: color 0.3s ease;
 }
 
 .nav-links a:hover {
@@ -58,13 +58,13 @@ body {
 }
 
 /* =========================
-   THEME TOGGLE BUTTON
+   THEME TOGGLE
 ========================= */
 .theme-toggle {
   background: transparent;
   border: 2px solid #7f00ff;
   color: #7f00ff;
-  padding: 8px 14px;
+  padding: 6px 14px;
   border-radius: 20px;
   cursor: pointer;
   font-size: 1rem;
@@ -84,12 +84,12 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 120px 10% 80px;
+  padding: 140px 10% 80px;
   position: relative;
   overflow: hidden;
   background:
-    radial-gradient(circle at top left, #7f00ff33, transparent 40%),
-    radial-gradient(circle at bottom right, #00c6ff33, transparent 40%);
+    radial-gradient(circle at top left, #7f00ff33, transparent 45%),
+    radial-gradient(circle at bottom right, #00c6ff33, transparent 45%);
 }
 
 .hero::before {
@@ -109,6 +109,9 @@ body {
   100% { background-position: 0% 50%; }
 }
 
+/* =========================
+   HERO CONTENT
+========================= */
 .hero-content {
   max-width: 600px;
   z-index: 2;
@@ -154,12 +157,12 @@ body {
 
 .primary {
   background: linear-gradient(135deg, #7f00ff, #00c6ff);
-  color: #ffffff;
+  color: white;
 }
 
 .primary:hover {
   transform: translateY(-3px);
-  box-shadow: 0 10px 30px #7f00ff66;
+  box-shadow: 0 12px 30px #7f00ff66;
 }
 
 .secondary {
@@ -169,7 +172,7 @@ body {
 
 .secondary:hover {
   background: #7f00ff;
-  color: #ffffff;
+  color: white;
 }
 
 /* =========================
@@ -214,19 +217,23 @@ body {
 
 .skill-card {
   padding: 25px;
-  border-radius: 16px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid #7f00ff33;
   text-align: center;
-  font-weight: 600;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid #7f00ff33;
   opacity: 0;
   transform: translateY(30px);
+  transition: all 0.6s ease;
 }
 
 .skill-card.show {
   opacity: 1;
   transform: translateY(0);
-  transition: all 0.6s ease;
+}
+
+.skill-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 0 30px #7f00ff99;
 }
 
 /* =========================
@@ -243,19 +250,37 @@ body {
 }
 
 .project-card {
+  position: relative;
   height: 320px;
   border-radius: 18px;
+  overflow: hidden;
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid #7f00ff33;
-  padding: 25px;
   opacity: 0;
   transform: translateY(40px);
+  transition: all 0.7s ease;
 }
 
 .project-card.show {
   opacity: 1;
   transform: translateY(0);
-  transition: all 0.7s ease;
+}
+
+/* Overlay */
+.project-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(11, 11, 15, 0.92);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 25px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.project-card:hover .project-overlay {
+  opacity: 1;
 }
 
 /* =========================
@@ -272,9 +297,9 @@ body {
 #particles {
   position: fixed;
   inset: 0;
-  pointer-events: none;
   z-index: 0;
-  opacity: 0.6;
+  pointer-events: none;
+  opacity: 0.5;
 }
 
 /* =========================
@@ -299,16 +324,7 @@ body {
 }
 
 /* =========================
-   FOOTER
-========================= */
-.footer {
-  padding: 50px 10%;
-  text-align: center;
-  border-top: 1px solid #7f00ff33;
-}
-
-/* =========================
-   LIGHT MODE (FUTURISTIC)
+   LIGHT MODE
 ========================= */
 body.light {
   background: #f4f6fb;
@@ -317,10 +333,6 @@ body.light {
 
 body.light .navbar {
   background: rgba(244, 246, 251, 0.85);
-}
-
-body.light .nav-links a {
-  color: #333;
 }
 
 body.light .hero {
@@ -332,6 +344,10 @@ body.light .hero {
 body.light .skill-card,
 body.light .project-card {
   background: rgba(0, 0, 0, 0.04);
+}
+
+body.light .project-overlay {
+  background: rgba(245, 246, 250, 0.95);
 }
 
 body.light .cursor-glow {
