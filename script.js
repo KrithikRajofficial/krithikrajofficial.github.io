@@ -34,16 +34,16 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(typeLoop, deleting ? 40 : 80);
   }
 
-  typeLoop();
+  if (typingElement) typeLoop();
 
 
   /* ==============================
-     SMOOTH SCROLL (ANCHORS)
+     SMOOTH SCROLL
   ============================== */
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener("click", function (e) {
+    anchor.addEventListener("click", e => {
       e.preventDefault();
-      const target = document.querySelector(this.getAttribute("href"));
+      const target = document.querySelector(anchor.getAttribute("href"));
       if (target) {
         target.scrollIntoView({ behavior: "smooth" });
       }
@@ -54,36 +54,29 @@ document.addEventListener("DOMContentLoaded", () => {
   /* ==============================
      SCROLL REVEAL (SKILLS + PROJECTS)
   ============================== */
-  const observer = new IntersectionObserver(
-    entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("show");
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.2 }
-  );
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
 
-  document.querySelectorAll(".skill-card").forEach(card => {
-    observer.observe(card);
-  });
-
-  document.querySelectorAll(".project-card").forEach(card => {
-    observer.observe(card);
+  document.querySelectorAll(".skill-card, .project-card").forEach(el => {
+    observer.observe(el);
   });
 
 
   /* ==============================
-     CURSOR GLOW EFFECT
+     CURSOR GLOW
   ============================== */
   const cursor = document.querySelector(".cursor-glow");
 
   if (cursor) {
-    document.addEventListener("mousemove", (e) => {
-      cursor.style.left = `${e.clientX}px`;
-      cursor.style.top = `${e.clientY}px`;
+    document.addEventListener("mousemove", e => {
+      cursor.style.left = e.clientX + "px";
+      cursor.style.top = e.clientY + "px";
       cursor.style.opacity = "1";
     });
 
@@ -94,81 +87,52 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* ==============================
-     PARTICLE BACKGROUND (CANVAS)
+     PARTICLE BACKGROUND (FIXED)
   ============================== */
   const canvas = document.getElementById("particles");
-  if (canvas) {
-    const ctx = canvas.getContext("2d");
-    let w, h;
+  if (!canvas) return;
 
-    function resizeCanvas() {
-      w = canvas.width = window.innerWidth;
-      h = canvas.height = window.innerHeight;
-    }
+  const ctx = canvas.getContext("2d");
 
-    resizeCanvas();
-    window.addEventListener("resize", resizeCanvas);
-
-    const particleCount = 60;
-    const particles = [];
-
-    for (let i = 0; i < particleCount; i++) {
-      particles.push({
-        x: Math.random() * w,
-        y: Math.random() * h,
-        r: Math.random() * 2 + 1,
-        dx: (Math.random() - 0.5) * 0.3,
-        dy: (Math.random() - 0.5) * 0.3
-      });
-    }
-
-    function drawParticles() {
-      ctx.clearRect(0, 0, w, h);
-
-      particles.forEach(p => {
-        p.x += p.dx;
-        p.y += p.dy;
-
-        if (p.x < 0 || p.x > w) p.dx *= -1;
-        if (p.y < 0 || p.y > h) p.dy *= -1;
-
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = "rgba(127, 0, 255, 0.4)";
-        ctx.fill();
-      });
-
-      requestAnimationFrame(drawParticles);
-    }
-
-    drawParticles();
+  function resizeCanvas() {
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width = window.innerWidth * dpr;
+    canvas.height = window.innerHeight * dpr;
+    canvas.style.width = window.innerWidth + "px";
+    canvas.style.height = window.innerHeight + "px";
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
   }
 
+  resizeCanvas();
+  window.addEventListener("resize", resizeCanvas);
 
-  /* ==============================
-     DARK / LIGHT MODE TOGGLE
-  ============================== */
-  const themeToggle = document.getElementById("themeToggle");
-  const body = document.body;
+  const particles = Array.from({ length: 60 }, () => ({
+    x: Math.random() * window.innerWidth,
+    y: Math.random() * window.innerHeight,
+    r: Math.random() * 1.5 + 0.5,
+    dx: (Math.random() - 0.5) * 0.3,
+    dy: (Math.random() - 0.5) * 0.3
+  }));
 
-  // Load saved theme
-  if (localStorage.getItem("theme") === "light") {
-    body.classList.add("light");
-    if (themeToggle) themeToggle.textContent = "☀️";
-  }
+  function animateParticles() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-  if (themeToggle) {
-    themeToggle.addEventListener("click", () => {
-      body.classList.toggle("light");
+    particles.forEach(p => {
+      p.x += p.dx;
+      p.y += p.dy;
 
-      if (body.classList.contains("light")) {
-        localStorage.setItem("theme", "light");
-        themeToggle.textContent = "☀️";
-      } else {
-        localStorage.setItem("theme", "dark");
-        themeToggle.textContent = "🌙";
-      }
+      if (p.x < 0 || p.x > window.innerWidth) p.dx *= -1;
+      if (p.y < 0 || p.y > window.innerHeight) p.dy *= -1;
+
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = "rgba(127, 0, 255, 0.6)";
+      ctx.fill();
     });
+
+    requestAnimationFrame(animateParticles);
   }
+
+  animateParticles();
 
 });
