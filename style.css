@@ -19,32 +19,29 @@ body {
   pointer-events: none;
 }
 
-/* CURSOR GLOW */
+/* CURSOR GLOW — REDUCED / PREMIUM */
 .cursor-glow {
   position: fixed;
-  width: 260px;
-  height: 260px;
+  width: 220px;
+  height: 220px;
   pointer-events: none;
   border-radius: 50%;
 
   background: radial-gradient(
     circle,
-    rgba(150, 90, 255, 0.28) 0%,
-    rgba(80, 160, 255, 0.18) 35%,
+    rgba(140, 80, 240, 0.18) 0%,
+    rgba(80, 150, 255, 0.10) 35%,
     rgba(0, 0, 0, 0) 70%
   );
 
   transform: translate(-50%, -50%);
-  filter: blur(45px);
+  filter: blur(55px);
   mix-blend-mode: screen;
 
   z-index: 3;
   opacity: 0;
   transition: opacity 0.25s ease;
 }
-
-
-
 /* NAVBAR */
 .navbar {
   position: fixed;
