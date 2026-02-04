@@ -1,3 +1,6 @@
+/* =========================
+   RESET
+========================= */
 * {
   margin: 0;
   padding: 0;
@@ -5,14 +8,18 @@
   font-family: 'Inter', sans-serif;
 }
 
+/* =========================
+   BODY
+========================= */
 body {
   background: #0b0b0f;
   color: #ffffff;
   overflow-x: hidden;
-  transition: background 0.35s ease, color 0.35s ease;
 }
 
-/* PARTICLES */
+/* =========================
+   PARTICLES (BACKGROUND)
+========================= */
 #particles {
   position: fixed;
   inset: 0;
@@ -20,22 +27,31 @@ body {
   pointer-events: none;
 }
 
-/* CURSOR GLOW (SUBTLE & SMALL) */
+/* =========================
+   CURSOR GLOW (SUBTLE)
+========================= */
 .cursor-glow {
   position: fixed;
-  width: 140px;
-  height: 140px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(150,100,255,0.16), transparent 65%);
-  filter: blur(28px);
-  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 200px;
   pointer-events: none;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(140, 90, 255, 0.18),
+    rgba(80, 160, 255, 0.08),
+    transparent 70%
+  );
+  transform: translate(-50%, -50%);
+  filter: blur(45px);
   opacity: 0;
-  z-index: 2;
-  transition: opacity 0.2s ease;
+  z-index: 3;
+  transition: opacity 0.25s ease;
 }
 
-/* NAVBAR */
+/* =========================
+   NAVBAR
+========================= */
 .navbar {
   position: fixed;
   top: 0;
@@ -44,71 +60,79 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgba(10,10,20,0.65);
+  background: rgba(10, 10, 20, 0.6);
   backdrop-filter: blur(10px);
   z-index: 10;
 }
 
 .logo {
-  color: #b983ff;
   font-weight: 700;
+  font-size: 1.2rem;
+  color: #b983ff;
 }
 
 .nav-links {
-  list-style: none;
   display: flex;
-  gap: 24px;
+  gap: 25px;
+  list-style: none;
 }
 
 .nav-links a {
   color: #ffffffcc;
   text-decoration: none;
+  font-weight: 500;
 }
 
-/* THEME TOGGLE */
-.theme-toggle {
-  background: transparent;
-  border: 1px solid #7f00ff;
-  color: #7f00ff;
-  padding: 6px 12px;
-  border-radius: 14px;
-  cursor: pointer;
+.nav-links a:hover {
+  color: #b983ff;
 }
 
-/* HERO */
+/* =========================
+   HERO
+========================= */
 .hero {
   min-height: 100vh;
-  padding: 140px 10% 80px;
+  padding: 120px 10% 80px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
+.hero-content {
+  max-width: 600px;
+}
+
 .hero-content h1 {
-  font-size: 3.4rem;
+  font-size: 3.6rem;
 }
 
 .hero-content h2 {
   margin-top: 10px;
+  font-size: 1.8rem;
   color: #b983ff;
 }
 
 .hero-content p {
   margin-top: 18px;
   color: #cfcfd6;
+  line-height: 1.6;
 }
 
+/* =========================
+   BUTTONS
+========================= */
 .hero-buttons {
-  margin-top: 28px;
+  margin-top: 30px;
   display: flex;
-  gap: 18px;
+  gap: 20px;
 }
 
 .btn {
-  padding: 14px 26px;
-  border-radius: 28px;
-  text-decoration: none;
+  padding: 14px 28px;
+  border-radius: 30px;
   font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
 }
 
 .primary {
@@ -121,29 +145,43 @@ body {
   color: #7f00ff;
 }
 
-/* IMAGE */
-.hero-image img {
-  width: 300px;
-  border-radius: 50%;
-  box-shadow: 0 0 30px #7f00ff66;
+.secondary:hover {
+  background: #7f00ff;
+  color: white;
 }
 
-/* SECTIONS */
-.skills, .projects, .contact {
+/* =========================
+   HERO IMAGE
+========================= */
+.hero-image img {
+  width: 320px;
+  border-radius: 50%;
+  box-shadow: 0 0 35px rgba(127, 0, 255, 0.6);
+}
+
+/* =========================
+   SECTIONS
+========================= */
+.skills,
+.projects,
+.contact {
   padding: 120px 10%;
 }
 
 .section-title {
   text-align: center;
+  font-size: 2.4rem;
   color: #b983ff;
   margin-bottom: 60px;
 }
 
-/* SKILLS – EFFECT RESTORED ✅ */
+/* =========================
+   SKILLS (FIXED HOVER ✨)
+========================= */
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px,1fr));
-  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 25px;
 }
 
 .skill-card {
@@ -151,29 +189,39 @@ body {
   text-align: center;
   border-radius: 16px;
   background: rgba(255,255,255,0.04);
-  border: 1px solid #7f00ff33;
-  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  border: 1px solid rgba(127, 0, 255, 0.25);
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    border-color 0.35s ease,
+    background 0.35s ease;
 }
 
 .skill-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 10px 28px rgba(127,0,255,0.35);
+  background: rgba(255,255,255,0.06);
+  border-color: rgba(127, 0, 255, 0.6);
+  box-shadow:
+    0 10px 30px rgba(127, 0, 255, 0.35),
+    inset 0 0 0 1px rgba(127, 0, 255, 0.15);
 }
 
-/* PROJECTS */
+/* =========================
+   PROJECTS
+========================= */
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
-  gap: 32px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 35px;
 }
 
 .project-card {
+  position: relative;
   height: 320px;
   border-radius: 18px;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid #7f00ff33;
-  position: relative;
   overflow: hidden;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(127, 0, 255, 0.25);
 }
 
 .project-overlay {
@@ -186,36 +234,51 @@ body {
   align-items: center;
   opacity: 0;
   transition: opacity 0.4s ease;
+  text-align: center;
 }
 
 .project-card:hover .project-overlay {
   opacity: 1;
 }
 
-/* FOOTER */
+.project-overlay h3 {
+  color: #b983ff;
+}
+
+.project-overlay p {
+  margin: 10px 0;
+  color: #cfcfd6;
+}
+
+.project-overlay a {
+  color: #7f00ff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* =========================
+   FOOTER
+========================= */
 .footer {
   padding: 50px 10%;
   text-align: center;
-  border-top: 1px solid #7f00ff33;
+  border-top: 1px solid rgba(127, 0, 255, 0.25);
 }
 
-/* LIGHT MODE – ACTUALLY VISIBLE ✅ */
-body.light {
-  background: #f4f6fb;
-  color: #0b0b0f;
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
 }
 
-body.light .navbar {
-  background: rgba(245,245,255,0.9);
+.social-links a {
+  color: #7f00ff;
+  text-decoration: none;
 }
 
-body.light .skill-card,
-body.light .project-card {
-  background: rgba(0,0,0,0.04);
-  border-color: rgba(0,0,0,0.15);
-}
-
-/* RESPONSIVE */
+/* =========================
+   RESPONSIVE
+========================= */
 @media (max-width: 900px) {
   .hero {
     flex-direction: column-reverse;
