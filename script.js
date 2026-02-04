@@ -28,16 +28,18 @@ document.addEventListener("DOMContentLoaded", () => {
   type();
 
   /* CURSOR GLOW */
-  const glow = document.querySelector(".cursor-glow");
-  document.addEventListener("mousemove", e => {
-    glow.style.left = e.clientX + "px";
-    glow.style.top = e.clientY + "px";
-    glow.style.opacity = "1";
-  });
+const glow = document.querySelector(".cursor-glow");
 
-  document.addEventListener("mouseleave", () => {
-    glow.style.opacity = "0";
-  });
+document.addEventListener("mousemove", (e) => {
+  glow.style.left = e.clientX + "px";
+  glow.style.top = e.clientY + "px";
+  glow.style.opacity = "1";
+});
+
+document.addEventListener("mouseleave", () => {
+  glow.style.opacity = "0";
+});
+
 
   /* PARTICLES */
   const canvas = document.getElementById("particles");
