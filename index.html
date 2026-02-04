@@ -1,161 +1,285 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Krithik Raj | Robotics & AI Engineer</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Krithik Raj — Robotics & Automation Engineer</title>
 
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Main stylesheet -->
+  <link rel="stylesheet" href="style.css">
+
+  <meta name="description" content="Krithik Raj — Robotics & Automation Engineer. Portfolio, research, projects, and contact.">
 </head>
-
 <body>
-
-<!-- BACKGROUND EFFECTS -->
-<canvas id="particles"></canvas>
-<div class="cursor-glow"></div>
-
-<!-- NAVBAR -->
-<nav class="navbar">
-  <div class="logo">KR</div>
-
-  <ul class="nav-links">
-    <li><a href="#home">Home</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#education">Education</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-
-  <button class="theme-toggle" id="themeToggle">🌙</button>
-</nav>
-
-<!-- HOME / HERO -->
-<section class="hero" id="home">
-  <div class="hero-inner">
-
-    <div class="hero-content">
-      <h1>Krithik Raj</h1>
-      <h2><span id="typing"></span></h2>
-
-      <p>
-        Designing intelligent robotic systems that bridge the physical
-        and digital world.
-      </p>
-
-      <div class="hero-buttons">
-        <a href="#" class="btn primary">Download Resume</a>
-        <a href="#contact" class="btn secondary">Contact Me</a>
-      </div>
-    </div>
-
-    <div class="hero-image">
-      <img src="assets/images/profile.jpg" alt="Krithik Raj" />
-
-      <!-- SEEKING ROLE BADGE (BELOW IMAGE) -->
-      <div class="seeking-inline">
-        <span class="dot"></span>
-        Seeking Robotics & Automation Roles
-      </div>
-    </div>
-
+  <!-- Decorative stars/gradients (keeps in background) -->
+  <div id="bg">
+    <canvas id="stars"></canvas>
+    <div class="bg-gradient"></div>
   </div>
-</section>
 
-<!-- SKILLS -->
-<section class="section" id="skills">
-  <h2 class="section-title">Technical Skills</h2>
+  <!-- Header / nav -->
+  <header class="site-header">
+    <div class="container header-row">
+      <div class="brand">
+        <div class="logo-mark">KR<span class="dot">°</span></div>
+      </div>
 
-  <div class="skills-grid">
-    <div class="skill-card">ROS 2</div>
-    <div class="skill-card">Computer Vision</div>
-    <div class="skill-card">SLAM</div>
-    <div class="skill-card">Python</div>
-    <div class="skill-card">C++</div>
-    <div class="skill-card">Autonomous Systems</div>
-    <div class="skill-card">Gazebo</div>
-    <div class="skill-card">OpenCV</div>
-  </div>
-</section>
+      <nav class="nav" id="mainNav">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact" class="contact-btn">Contact</a>
+      </nav>
 
-<!-- EDUCATION -->
-<section class="section" id="education">
-  <h2 class="section-title">Education</h2>
-
-  <div class="edu-grid">
-    <div class="edu-card">
-      <h3>MSc Robotics</h3>
-      <p>University of Birmingham</p>
+      <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">🌙</button>
     </div>
+  </header>
 
-    <div class="edu-card">
-      <h3>B.E Mechatronics</h3>
-      <p>Anna University</p>
+  <!-- HERO / HOME -->
+  <main id="home" class="hero-section">
+    <div class="container hero-grid">
+      <div class="hero-left">
+        <p class="preamble">• Seeking Robotics &amp; Automation Roles</p>
+        <h1 class="hero-name">Krithik Raj</h1>
+        <h2 class="hero-title">Robotics &amp; Automation Engineer</h2>
+        <p class="hero-desc">
+          Designing intelligent robotic systems that bridge the physical and digital world — SLAM, ROS2, perception, and system design.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn cta" href="assets/resume/Krithik_Raj_Resume.pdf" target="_blank" rel="noopener">Download Resume</a>
+          <a class="btn outline" href="#projects">Explore My Work</a>
+        </div>
+
+        <div class="hero-links">
+          <a href="mailto:krithikraj@email.com">krithikraj@email.com</a>
+           · <a href="https://www.linkedin.com/in/krithikraj" target="_blank" rel="noopener">LinkedIn</a>
+           · <a href="https://github.com/KrithikRajofficial" target="_blank" rel="noopener">GitHub</a>
+        </div>
+
+        <div class="last-updated">Last updated: Feb 04, 2026</div>
+      </div>
+
+      <aside class="hero-right">
+        <div class="profile-wrap">
+          <div class="profile-glow"></div>
+          <img src="assets/images/profile-circle.jpg" alt="Krithik Raj" class="profile-img">
+          <div class="profile-badge">Seeking Roles</div>
+        </div>
+
+        <div class="edu-card">
+          <h4>Education</h4>
+          <div class="edu-item">
+            <img src="assets/images/uob_logo.png" alt="University logo" class="edu-logo">
+            <div>
+              <div class="edu-degree">MSc Robotics</div>
+              <div class="edu-school">University of Birmingham</div>
+            </div>
+          </div>
+          <div class="edu-item">
+            <img src="assets/images/svce-logo.png" alt="College logo" class="edu-logo small">
+            <div>
+              <div class="edu-degree">B.E. Mechanical Engineering</div>
+              <div class="edu-school">Sri Venkateswara College of Engineering</div>
+            </div>
+          </div>
+        </div>
+      </aside>
     </div>
-  </div>
-</section>
+  </main>
 
-<!-- EXPERIENCE -->
-<section class="section" id="experience">
-  <h2 class="section-title">Experience</h2>
+  <!-- ABOUT -->
+  <section id="about" class="section about">
+    <div class="container two-col">
+      <div class="content">
+        <h3 class="section-title">About Me</h3>
+        <p>
+          Robotics &amp; Automation Engineer with a Mechanical Engineering foundation and strong experience in ROS 2, autonomous systems, perception, and simulation-driven development. I work across end-to-end pipelines: embedded control, perception, and system integration.
+        </p>
 
-  <div class="timeline">
-    <div class="timeline-item">
-      <span class="timeline-dot"></span>
-      <div class="timeline-card">
-        <h3>Research Associate</h3>
-        <p>Extreme Robotics Laboratory (NCNR)</p>
-        <span>Nov 2025 – Present</span>
+        <h4>Research & Publications</h4>
+        <ul class="publications">
+          <li>Paper 1 — Title from resume. (Peer-reviewed conference)</li>
+          <li>Paper 2 — Title from resume. (Journal)</li>
+        </ul>
+
+      </div>
+
+      <aside class="side-box">
+        <h4>Quick facts</h4>
+        <ul>
+          <li><strong>6+</strong> Major Projects</li>
+          <li><strong>3+</strong> Years Experience (Robotics R&amp;D)</li>
+          <li>Awards: Innovation Award — SIEP E-bike Challenge (2024)</li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="section dark-section">
+    <div class="container">
+      <h3 class="section-title">Technical Skills</h3>
+      <p class="subtitle">My engineering toolkit</p>
+
+      <div class="skills-grid">
+        <div class="skill-card">
+          <h4>3D Modelling &amp; Tools</h4>
+          <div class="chips">
+            <span>CATIA V5</span><span>Fusion 360</span><span>SolidWorks</span><span>Creo</span><span>AutoCAD</span>
+            <span>Git</span><span>Ubuntu</span><span>VS Code</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <h4>Programming</h4>
+          <div class="chips">
+            <span>Python</span><span>C / C++</span><span>SQL</span><span>HTML / CSS / JS</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <h4>Vision &amp; Perception</h4>
+          <div class="chips">
+            <span>SLAM</span><span>YOLO / YOLOv8</span><span>OpenCV</span><span>Photogrammetry</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <h4>Robotics</h4>
+          <div class="chips">
+            <span>ROS 2 (Humble)</span><span>Gazebo</span><span>RViz</span><span>ESP32</span><span>Arduino</span><span>Pixhawk</span>
+          </div>
+        </div>
       </div>
     </div>
+  </section>
 
-    <div class="timeline-item">
-      <span class="timeline-dot"></span>
-      <div class="timeline-card">
-        <h3>Technical Trainee</h3>
-        <p>Schneider Electric</p>
+  <!-- PROJECTS (preview) -->
+  <section id="projects" class="section">
+    <div class="container">
+      <h3 class="section-title">Research &amp; Projects</h3>
+      <p class="subtitle">Applying theory to practice</p>
+
+      <div class="projects-grid">
+        <article class="project">
+          <div class="project-image" style="background-image:url('assets/images/placeholder-project-1.jpg')"></div>
+          <h4>Autonomous E-Bike System</h4>
+          <p>End-to-end hardware+software for an intelligent e-bike — drivetrain, electronics, control.</p>
+        </article>
+
+        <article class="project">
+          <div class="project-image" style="background-image:url('assets/images/placeholder-project-2.jpg')"></div>
+          <h4>Rescue Drone — SIH</h4>
+          <p>Autonomous rescue drone with person detection and message relay.</p>
+        </article>
+
+        <article class="project">
+          <div class="project-image" style="background-image:url('assets/images/placeholder-project-3.jpg')"></div>
+          <h4>Final Year UAV</h4>
+          <p>Autonomous quadrotor with perception stack for person following and mapping.</p>
+        </article>
+
+        <article class="project">
+          <div class="project-image" style="background-image:url('assets/images/placeholder-project-4.jpg')"></div>
+          <h4>Webots Mobile Robot</h4>
+          <p>ROS2-based navigation stack and simulation for a mobile robot platform.</p>
+        </article>
       </div>
     </div>
+  </section>
 
-    <div class="timeline-item">
-      <span class="timeline-dot"></span>
-      <div class="timeline-card">
-        <h3>Industrial Trainee</h3>
-        <p>Hyundai Motor India</p>
+  <!-- EXPERIENCE -->
+  <section id="experience" class="section dark-section">
+    <div class="container timeline">
+      <h3 class="section-title">Professional Experience</h3>
+
+      <div class="timeline-item">
+        <h4>Research Associate — Extreme Robotics Laboratory (NCNR)</h4>
+        <p class="meta">Jan 2025 – Present</p>
+        <p>Autonomous robotics research, simulation and system design.</p>
+      </div>
+
+      <div class="timeline-item">
+        <h4>Intern — Company name</h4>
+        <p class="meta">Jun 2023 – Aug 2023</p>
+        <p>Internship focused on robotics R&amp;D and prototyping.</p>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- PROJECTS -->
-<section class="section" id="projects">
-  <h2 class="section-title">Research & Projects</h2>
+  <!-- CONTACT -->
+  <section id="contact" class="section contact-section">
+    <div class="container two-col">
+      <div class="contact-left">
+        <h3 class="section-title">Get In Touch</h3>
+        <p>Interested in robotics research, industry roles, or collaborations? Let's connect.</p>
 
-  <div class="projects-grid">
-    <div class="project-card">
-      <div class="project-overlay">
-        <h3>Automatic Pill Dispenser</h3>
-        <p>Embedded healthcare robotics</p>
+        <div class="contact-cards">
+          <div class="contact-card">
+            <div class="icon">✉️</div>
+            <div>
+              <div class="card-title">Email</div>
+              <a href="mailto:krithikraj@email.com">krithikraj@email.com</a>
+            </div>
+          </div>
+
+          <div class="contact-card">
+            <div class="icon">in</div>
+            <div>
+              <div class="card-title">LinkedIn</div>
+              <a href="https://www.linkedin.com/in/krithikraj" target="_blank" rel="noopener">linkedin.com/in/krithikraj</a>
+            </div>
+          </div>
+
+          <div class="contact-card">
+            <div class="icon">🐙</div>
+            <div>
+              <div class="card-title">GitHub</div>
+              <a href="https://github.com/KrithikRajofficial" target="_blank" rel="noopener">github.com/KrithikRajofficial</a>
+            </div>
+          </div>
+
+          <a class="btn cta" href="mailto:krithikraj@email.com">Send Email</a>
+        </div>
+      </div>
+
+      <div class="contact-right">
+        <form class="contact-form" onsubmit="event.preventDefault(); alert('Thanks — email feature not configured in this demo.');">
+          <h4>Send a Message</h4>
+
+          <label>Full Name *</label>
+          <input type="text" placeholder="Your name" required>
+
+          <label>Email Address *</label>
+          <input type="email" placeholder="you@company.com" required>
+
+          <label>Message *</label>
+          <textarea placeholder="Tell me about your project..." required></textarea>
+
+          <button class="btn cta" type="submit">Send Message</button>
+        </form>
       </div>
     </div>
+  </section>
 
-    <div class="project-card"></div>
-    <div class="project-card"></div>
-  </div>
-</section>
+  <footer class="site-footer">
+    <div class="container footer-row">
+      <div>© 2026 Krithik Raj</div>
+      <div>
+        <a href="https://github.com/KrithikRajofficial" target="_blank" rel="noopener">GitHub</a> ·
+        <a href="https://www.linkedin.com/in/krithikraj" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
 
-<!-- CONTACT -->
-<section class="section contact" id="contact">
-  <h2 class="section-title">Contact</h2>
-  <p>Email: <a href="mailto:krithikraj@email.com">krithikraj@email.com</a></p>
-</section>
+  <button id="toTop" title="Back to top">↑</button>
 
-<!-- FOOTER -->
-<footer class="footer">
-  <p>© 2026 Krithik Raj</p>
-</footer>
-
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
