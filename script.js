@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
 
+  /* TYPING EFFECT */
   const roles = [
     "Robotics & AI Engineer",
     "ROS • Computer Vision • Autonomous Systems",
@@ -25,6 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   typeLoop();
 
+  /* CURSOR GLOW */
   const glow = document.querySelector(".cursor-glow");
   document.addEventListener("mousemove", e => {
     glow.style.left = e.clientX + "px";
@@ -33,6 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   document.addEventListener("mouseleave", () => glow.style.opacity = "0");
 
+  /* PARTICLES */
   const canvas = document.getElementById("particles");
   const ctx = canvas.getContext("2d");
 
@@ -58,6 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
       p.y += p.dy;
       if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
       if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
       ctx.fillStyle = "rgba(127,0,255,0.35)";
@@ -67,6 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   animate();
 
+  /* THEME TOGGLE */
   const toggle = document.getElementById("themeToggle");
   toggle.addEventListener("click", () => {
     document.body.classList.toggle("light");
