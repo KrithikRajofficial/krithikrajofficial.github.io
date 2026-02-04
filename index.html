@@ -3,137 +3,225 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Krithik Raj | Robotics & AI Engineer</title>
+  <title>Krithik Raj | Robotics & Automation Engineer</title>
 
+  <!-- Styles -->
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
+<!-- ================= BACKGROUND EFFECTS ================= -->
 <canvas id="particles"></canvas>
 <div class="cursor-glow"></div>
 
-<!-- NAVBAR -->
+<!-- ================= NAVBAR ================= -->
 <nav class="navbar">
   <div class="logo">KR</div>
 
   <ul class="nav-links">
     <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
     <li><a href="#skills">Skills</a></li>
-    <li><a href="#education">Education</a></li>
-    <li><a href="#experience">Experience</a></li>
     <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#certifications">Certifications</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 
-  <button class="theme-toggle" id="themeToggle">🌙</button>
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">🌙</button>
 </nav>
 
-<!-- HOME -->
+<!-- ================= HOME / HERO ================= -->
 <section class="hero" id="home">
   <div class="hero-content">
     <h1>Krithik Raj</h1>
     <h2><span id="typing"></span></h2>
-    <p>Designing intelligent robotic systems that bridge the physical and digital world.</p>
+
+    <p>
+      Robotics & Automation engineer focused on intelligent systems,
+      autonomous platforms, and real-world robotic applications.
+    </p>
 
     <div class="hero-buttons">
       <a href="#" class="btn primary">Download Resume</a>
-      <a href="#contact" class="btn secondary">Contact Me</a>
+      <a href="#projects" class="btn secondary">Explore My Work</a>
+    </div>
+
+    <div class="hero-links">
+      <p>
+        Email: <a href="mailto:krithikraj@email.com">krithikraj@email.com</a> |
+        <a href="https://linkedin.com/in/krithikraj" target="_blank">LinkedIn</a> |
+        <a href="https://github.com/KrithikRajofficial" target="_blank">GitHub</a>
+      </p>
+      <small>Last updated: September 2026</small>
     </div>
   </div>
 
   <div class="hero-image">
     <img src="assets/images/profile.jpg" alt="Krithik Raj">
-    <div class="seeking-badge">🟢 Seeking Robotics & Automation Roles</div>
+    <div class="seeking-badge">Seeking Robotics & Automation Roles</div>
   </div>
 </section>
 
-<!-- SKILLS -->
+<!-- ================= ABOUT + EDUCATION ================= -->
+<section class="about-education" id="about">
+  <div class="about">
+    <h2 class="section-title">About Me</h2>
+    <p>
+      I am a robotics engineer with a strong foundation in mechanical engineering,
+      robotics software, and autonomous systems. My interests span perception,
+      control, simulation, and applied research in robotics.
+    </p>
+  </div>
+
+  <div class="education">
+    <h3>Education</h3>
+
+    <div class="education-item">
+      <img src="assets/images/uob_logo.png" alt="University of Birmingham">
+      <div>
+        <strong>MSc Robotics</strong><br>
+        University of Birmingham
+      </div>
+    </div>
+
+    <div class="education-item">
+      <img src="assets/images/svce-logo.png" alt="Sri Venkateswara College of Engineering">
+      <div>
+        <strong>B.E Mechanical Engineering</strong><br>
+        Sri Venkateswara College of Engineering
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TECHNICAL SKILLS ================= -->
 <section class="skills" id="skills">
   <h2 class="section-title">Technical Skills</h2>
+
   <div class="skills-grid">
-    <div class="skill-card">ROS 2</div>
-    <div class="skill-card">Computer Vision</div>
+    <div class="skill-card">ROS 2 (Humble)</div>
+    <div class="skill-card">Gazebo & RViz</div>
     <div class="skill-card">SLAM</div>
+    <div class="skill-card">YOLO & OpenCV</div>
     <div class="skill-card">Python</div>
-    <div class="skill-card">C++</div>
-    <div class="skill-card">Autonomous Systems</div>
-    <div class="skill-card">Gazebo</div>
-    <div class="skill-card">OpenCV</div>
+    <div class="skill-card">C / C++</div>
+    <div class="skill-card">Arduino & ESP32</div>
+    <div class="skill-card">Raspberry Pi</div>
+    <div class="skill-card">Pixhawk</div>
+    <div class="skill-card">CATIA V5</div>
+    <div class="skill-card">Fusion 360</div>
+    <div class="skill-card">SolidWorks</div>
   </div>
 </section>
 
-<!-- EDUCATION -->
-<section class="education" id="education">
-  <h2 class="section-title">Education</h2>
-
-  <div class="education-grid">
-    <div class="education-card">
-      <div class="edu-logo">
-        <img src="assets/images/uob-logo.png" alt="University of Birmingham Logo">
-      </div>
-      <div class="edu-content">
-        <h3>MSc Robotics</h3>
-        <p>University of Birmingham</p>
-      </div>
-    </div>
-
-    <div class="education-card">
-      <div class="edu-logo">
-        <img src="assets/images/svce-logo.png" alt="SVCE Logo">
-      </div>
-      <div class="edu-content">
-        <h3>B.E Mechanical Engineering</h3>
-        <p>Sri Venkateswara College of Engineering</p>
-      </div>
-    </div>
-  </div>
+<!-- ================= CURRENTLY LEARNING ================= -->
+<section class="learning">
+  <h2 class="section-title">Currently Learning</h2>
+  <p>
+    Advancing skills in simulation, modeling, and control using
+    MATLAB & Simulink, and physics-based robotics simulation with MuJoCo.
+  </p>
 </section>
 
-<!-- EXPERIENCE -->
-<section class="experience" id="experience">
-  <h2 class="section-title">Experience</h2>
-
-  <div class="timeline">
-    <div class="timeline-item">
-      <h3>Research Associate</h3>
-      <p>Extreme Robotics Laboratory (NCNR)</p>
-      <span>Nov 2025 – Present</span>
-    </div>
-
-    <div class="timeline-item">
-      <h3>Technical Trainee</h3>
-      <p>Schneider Electric</p>
-    </div>
-
-    <div class="timeline-item">
-      <h3>Industrial Trainee</h3>
-      <p>Hyundai Motor India</p>
-    </div>
-  </div>
-</section>
-
-<!-- PROJECTS -->
+<!-- ================= PROJECTS ================= -->
 <section class="projects" id="projects">
   <h2 class="section-title">Research & Projects</h2>
 
   <div class="projects-grid">
     <div class="project-card">
       <div class="project-overlay">
-        <h3>Automatic Pill Dispenser</h3>
-        <p>Embedded healthcare robotics</p>
+        <h3>Autonomous E-Bike System</h3>
+        <p>Electric mobility platform with autonomous features.</p>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-overlay">
+        <h3>Autonomous Drone (Final Year Project)</h3>
+        <p>AI-based navigation and perception.</p>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-overlay">
+        <h3>SIH Project</h3>
+        <p>Smart India Hackathon solution.</p>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-overlay">
+        <h3>Webots Simulation Project</h3>
+        <p>Robot simulation and control.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CONTACT -->
-<section class="contact" id="contact">
-  <h2 class="section-title">Contact</h2>
-  <p>Email: <a href="mailto:krithikraj@email.com">krithikraj@email.com</a></p>
+<!-- ================= PUBLICATIONS ================= -->
+<section class="publications">
+  <h2 class="section-title">Research Publications</h2>
+  <ul>
+    <li>Publication Title 1 – Conference / Journal</li>
+    <li>Publication Title 2 – Conference / Journal</li>
+  </ul>
 </section>
 
+<!-- ================= EXPERIENCE ================= -->
+<section class="experience" id="experience">
+  <h2 class="section-title">Professional Experience</h2>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <h4>Research Associate</h4>
+      <span>Extreme Robotics Laboratory (NCNR) | Nov 2024 – Present</span>
+      <p>Robotics research and development.</p>
+    </div>
+
+    <div class="timeline-item">
+      <h4>Intern – Automation</h4>
+      <span>Industry Internship</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CERTIFICATIONS ================= -->
+<section class="certifications" id="certifications">
+  <h2 class="section-title">Certifications</h2>
+  <ul>
+    <li>Robotics & Automation Certification</li>
+    <li>Industrial Automation Training</li>
+  </ul>
+</section>
+
+<!-- ================= AWARDS ================= -->
+<section class="awards">
+  <h2 class="section-title">Awards & Recognition</h2>
+  <ul>
+    <li>Smart India Hackathon Participation</li>
+    <li>Academic Project Recognition</li>
+  </ul>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section class="contact" id="contact">
+  <h2 class="section-title">Get in Touch</h2>
+  <p>
+    Interested in collaboration, research, or robotics roles?
+    Feel free to reach out.
+  </p>
+
+  <p>
+    Email: <a href="mailto:krithikraj@email.com">krithikraj@email.com</a><br>
+    LinkedIn: <a href="https://linkedin.com/in/krithikraj" target="_blank">linkedin.com/in/krithikraj</a><br>
+    GitHub: <a href="https://github.com/KrithikRajofficial" target="_blank">github.com/KrithikRajofficial</a>
+  </p>
+</section>
+
+<!-- ================= FOOTER ================= -->
 <footer class="footer">
   <p>© 2026 Krithik Raj</p>
 </footer>
