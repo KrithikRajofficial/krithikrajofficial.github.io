@@ -9,7 +9,7 @@ body {
   background: #0b0b0f;
   color: #ffffff;
   overflow-x: hidden;
-  transition: background 0.4s ease, color 0.4s ease;
+  transition: background 0.35s ease, color 0.35s ease;
 }
 
 /* PARTICLES */
@@ -20,22 +20,18 @@ body {
   pointer-events: none;
 }
 
-/* CURSOR GLOW (SUBTLE) */
+/* CURSOR GLOW (SUBTLE & SMALL) */
 .cursor-glow {
   position: fixed;
-  width: 160px;
-  height: 160px;
+  width: 140px;
+  height: 140px;
   border-radius: 50%;
-  pointer-events: none;
-  background: radial-gradient(
-    circle,
-    rgba(140, 100, 255, 0.18),
-    rgba(0, 0, 0, 0) 65%
-  );
-  filter: blur(35px);
+  background: radial-gradient(circle, rgba(150,100,255,0.16), transparent 65%);
+  filter: blur(28px);
   transform: translate(-50%, -50%);
-  z-index: 2;
+  pointer-events: none;
   opacity: 0;
+  z-index: 2;
   transition: opacity 0.2s ease;
 }
 
@@ -59,8 +55,8 @@ body {
 }
 
 .nav-links {
-  display: flex;
   list-style: none;
+  display: flex;
   gap: 24px;
 }
 
@@ -71,11 +67,11 @@ body {
 
 /* THEME TOGGLE */
 .theme-toggle {
-  border: 1px solid #7f00ff;
   background: transparent;
+  border: 1px solid #7f00ff;
   color: #7f00ff;
   padding: 6px 12px;
-  border-radius: 16px;
+  border-radius: 14px;
   cursor: pointer;
 }
 
@@ -143,7 +139,7 @@ body {
   margin-bottom: 60px;
 }
 
-/* SKILLS */
+/* SKILLS – EFFECT RESTORED ✅ */
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px,1fr));
@@ -156,6 +152,12 @@ body {
   border-radius: 16px;
   background: rgba(255,255,255,0.04);
   border: 1px solid #7f00ff33;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.skill-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 28px rgba(127,0,255,0.35);
 }
 
 /* PROJECTS */
@@ -197,13 +199,7 @@ body {
   border-top: 1px solid #7f00ff33;
 }
 
-.social-links {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-}
-
-/* LIGHT MODE */
+/* LIGHT MODE – ACTUALLY VISIBLE ✅ */
 body.light {
   background: #f4f6fb;
   color: #0b0b0f;
@@ -216,6 +212,7 @@ body.light .navbar {
 body.light .skill-card,
 body.light .project-card {
   background: rgba(0,0,0,0.04);
+  border-color: rgba(0,0,0,0.15);
 }
 
 /* RESPONSIVE */
