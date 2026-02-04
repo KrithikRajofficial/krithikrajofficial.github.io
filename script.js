@@ -1,103 +1,145 @@
-// Stars canvas background (simple, efficient)
-(function(){
-  const canvas = document.getElementById('stars');
-  if(!canvas) return;
+/* Particle background + mouse glow + theme toggle + small parallax effects */
+/* Adjust number of particles according to device width */
+(() => {
+  const canvas = document.getElementById('bg-canvas');
   const ctx = canvas.getContext('2d');
-  let w, h, stars=[];
+  let w = canvas.width = innerWidth;
+  let h = canvas.height = innerHeight;
+
+  const devicePixelRatio = window.devicePixelRatio || 1;
+  canvas.width = innerWidth * devicePixelRatio;
+  canvas.height = innerHeight * devicePixelRatio;
+  canvas.style.width = innerWidth + 'px';
+  canvas.style.height = innerHeight + 'px';
+  ctx.scale(devicePixelRatio, devicePixelRatio);
+
+  let mouse = { x: w/2, y: h/2 };
+
+  // particles
+  const particles = [];
+  const count = Math.round(Math.max(40, innerWidth / 20));
+
+  function rand(min, max){ return Math.random()*(max-min)+min; }
+
+  for(let i=0;i<count;i++){
+    particles.push({
+      x: Math.random()*innerWidth,
+      y: Math.random()*innerHeight,
+      r: rand(0.6,2.6),
+      vx: rand(-0.2,0.2),
+      vy: rand(-0.1,0.1),
+      hue: rand(200,210),
+      alpha: rand(0.08,0.28)
+    });
+  }
 
   function resize(){
-    w = canvas.width = innerWidth;
-    h = canvas.height = innerHeight;
-    initStars();
+    const wpx = innerWidth;
+    const hpx = innerHeight;
+    canvas.width = wpx * devicePixelRatio;
+    canvas.height = hpx * devicePixelRatio;
+    canvas.style.width = wpx + 'px';
+    canvas.style.height = hpx + 'px';
+    ctx.scale(devicePixelRatio, devicePixelRatio);
   }
-
-  function initStars(){
-    stars = [];
-    const count = Math.round((w*h)/9000); // tuned for perf
-    for(let i=0;i<count;i++){
-      stars.push({
-        x: Math.random()*w,
-        y: Math.random()*h,
-        r: Math.random()*1.4 + 0.2,
-        alpha: Math.random()*0.8 + 0.15,
-        vx: (Math.random()-0.5)*0.05
-      });
-    }
-  }
-
-  function draw(){
-    ctx.clearRect(0,0,w,h);
-    for(let s of stars){
-      ctx.beginPath();
-      ctx.fillStyle = "rgba(200,180,255," + s.alpha + ")";
-      ctx.arc(s.x, s.y, s.r, 0, Math.PI*2);
-      ctx.fill();
-      s.x += s.vx;
-      if(s.x<0) s.x = w;
-      if(s.x> w) s.x = 0;
-    }
-    requestAnimationFrame(draw);
-  }
-
   window.addEventListener('resize', resize);
-  resize();
-  draw();
-})();
 
-// Smooth scroll for nav links
-document.querySelectorAll('a[href^="#"]').forEach(a=>{
-  a.addEventListener('click', function(e){
-    const href = this.getAttribute('href');
-    if(href === '#') return;
-    const target = document.querySelector(href);
-    if(target){
-      e.preventDefault();
-      target.scrollIntoView({behavior:'smooth', block:'start'});
+  function update(){
+    ctx.clearRect(0,0,innerWidth,innerHeight);
+
+    // soft gradient overlay
+    const grad = ctx.createLinearGradient(0,0,innerWidth,innerHeight);
+    grad.addColorStop(0,'rgba(5,12,20,0.15)');
+    grad.addColorStop(1,'rgba(6,12,24,0.3)');
+    ctx.fillStyle = grad;
+    ctx.fillRect(0,0,innerWidth,innerHeight);
+
+    // draw particles
+    for(let p of particles){
+      p.x += p.vx + (mouse.x - innerWidth/2)*0.00006;
+      p.y += p.vy + (mouse.y - innerHeight/2)*0.00004;
+
+      // wrap
+      if(p.x < -10) p.x = innerWidth + 10;
+      if(p.x > innerWidth + 10) p.x = -10;
+      if(p.y < -10) p.y = innerHeight + 10;
+      if(p.y > innerHeight + 10) p.y = -10;
+
+      ctx.beginPath();
+      ctx.fillStyle = `rgba(${Math.round(90)},${Math.round(160)},${255},${p.alpha})`;
+      ctx.arc(p.x, p.y, p.r * (1 + Math.sin(Date.now()/1000 + p.r)*0.2), 0, Math.PI*2);
+      ctx.fill();
     }
-  })
-});
 
-// Scroll-to-top
-const toTop = document.getElementById('toTop');
-toTop.addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
-window.addEventListener('scroll', ()=>{
-  if(window.scrollY > 400) toTop.style.display = 'block';
-  else toTop.style.display = 'none';
-});
+    // occasional larger subtle nebula blobs
+    if(Math.random() > 0.995){
+      ctx.beginPath();
+      const gx = Math.random() * innerWidth;
+      const gy = Math.random() * innerHeight;
+      const rg = ctx.createRadialGradient(gx, gy, 10, gx, gy, 300);
+      rg.addColorStop(0, 'rgba(94,200,255,0.04)');
+      rg.addColorStop(1, 'rgba(58,167,255,0.0)');
+      ctx.fillStyle = rg;
+      ctx.fillRect(gx-300, gy-300, 600, 600);
+    }
 
-// Theme toggle (simple dark/light toggle)
-const themeToggle = document.getElementById('themeToggle');
-themeToggle.addEventListener('click', ()=>{
+    requestAnimationFrame(update);
+  }
+  update();
+
+  // mouse tracking for glow
+  const mg = document.getElementById('mouse-glow');
+  window.addEventListener('mousemove', (e) => {
+    mouse.x = e.clientX;
+    mouse.y = e.clientY;
+    mg.style.left = e.clientX + 'px';
+    mg.style.top = e.clientY + 'px';
+    mg.style.opacity = 1;
+  });
+  window.addEventListener('mouseleave', ()=> mg.style.opacity = 0 );
+
+  // small parallax for hero elements based on mouse
+  const heroLeft = document.querySelector('.hero-left');
+  const heroRight = document.querySelector('.hero-right');
+  document.addEventListener('mousemove', (ev)=>{
+    const cx = innerWidth/2;
+    const cy = innerHeight/2;
+    const dx = (ev.clientX - cx) / cx;
+    const dy = (ev.clientY - cy) / cy;
+
+    if(heroLeft) heroLeft.style.transform = `translate3d(${dx*8}px, ${dy*6}px, 0)`;
+    if(heroRight) heroRight.style.transform = `translate3d(${dx*-12}px, ${dy*-8}px, 0)`;
+  });
+
+  /* Theme toggle */
+  const themeToggle = document.getElementById('theme-toggle');
+  const root = document.documentElement;
   const body = document.body;
-  if(body.classList.contains('light')){
-    body.classList.remove('light');
-    themeToggle.textContent = '🌙';
-  } else {
-    body.classList.add('light');
-    themeToggle.textContent = '☀️';
-  }
-});
 
-// small enhancement: highlight current section in nav
-const sections = Array.from(document.querySelectorAll('main, section[id]'));
-const navLinks = Array.from(document.querySelectorAll('.nav a:not(.contact-btn)'));
+  // init theme from localStorage
+  const saved = localStorage.getItem('site-theme') || 'dark';
+  if(saved === 'light'){ body.classList.add('light'); }
 
-function onScroll(){
-  let index = sections.length;
-  while(--index >= 0 && window.scrollY + 140 < sections[index].offsetTop) {}
-  navLinks.forEach(a => a.classList.remove('active'));
-  if(index >= 0) {
-    const id = sections[index].id;
-    const link = document.querySelector('.nav a[href="#'+id+'"]');
-    if(link) link.classList.add('active');
-  }
-}
-onScroll();
-window.addEventListener('scroll', onScroll);
+  themeToggle.addEventListener('click', ()=>{
+    const isLight = body.classList.toggle('light');
+    localStorage.setItem('site-theme', isLight ? 'light' : 'dark');
+  });
 
-// Accessibility: allow keyboard focus outlines
-document.addEventListener('keydown', function(e){
-  if(e.key === 'Tab'){
-    document.body.classList.add('show-focus');
-  }
-});
+  /* Simple smooth scrolling for anchor links */
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click', (e)=>{
+      const href = a.getAttribute('href');
+      if(href.length>1){
+        e.preventDefault();
+        const el = document.querySelector(href);
+        if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+      }
+    });
+  });
+
+  // small performance friendly start: reduce particles on small screens
+  window.addEventListener('load', ()=>{
+    // nothing else for now
+  });
+
+})();
