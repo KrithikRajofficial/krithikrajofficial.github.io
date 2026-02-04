@@ -29,13 +29,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* CURSOR GLOW */
   const glow = document.querySelector(".cursor-glow");
-
   document.addEventListener("mousemove", e => {
     glow.style.left = e.clientX + "px";
     glow.style.top = e.clientY + "px";
     glow.style.opacity = "1";
   });
-
   document.addEventListener("mouseleave", () => {
     glow.style.opacity = "0";
   });
@@ -51,10 +49,10 @@ document.addEventListener("DOMContentLoaded", () => {
   resize();
   window.addEventListener("resize", resize);
 
-  const dots = Array.from({ length: 50 }, () => ({
+  const dots = Array.from({ length: 45 }, () => ({
     x: Math.random() * canvas.width,
     y: Math.random() * canvas.height,
-    r: Math.random() * 1.6 + 0.6,
+    r: Math.random() * 1.4 + 0.6,
     dx: (Math.random() - 0.5) * 0.25,
     dy: (Math.random() - 0.5) * 0.25
   }));
@@ -77,7 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   animate();
 
-  /* THEME TOGGLE */
+  /* ✅ THEME TOGGLE – FIXED */
   const toggle = document.getElementById("themeToggle");
   toggle.addEventListener("click", () => {
     document.body.classList.toggle("light");
