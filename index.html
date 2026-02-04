@@ -15,17 +15,12 @@
 <canvas id="particles"></canvas>
 <div class="cursor-glow"></div>
 
-<!-- FLOATING SEEKING ROLE BADGE -->
-<div class="seeking-badge">
-  <span class="dot"></span>
-  Seeking Robotics & Automation Roles
-</div>
-
 <!-- NAVBAR -->
 <nav class="navbar">
   <div class="logo">KR</div>
 
   <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#education">Education</a></li>
     <li><a href="#experience">Experience</a></li>
@@ -33,16 +28,21 @@
     <li><a href="#contact">Contact</a></li>
   </ul>
 
-  <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">🌙</button>
+  <button class="theme-toggle" id="themeToggle">🌙</button>
 </nav>
 
-<!-- HERO -->
-<section class="hero">
+<!-- HOME / HERO -->
+<section class="hero" id="home">
   <div class="hero-inner">
+
     <div class="hero-content">
       <h1>Krithik Raj</h1>
       <h2><span id="typing"></span></h2>
-      <p>Designing intelligent robotic systems that bridge the physical and digital world.</p>
+
+      <p>
+        Designing intelligent robotic systems that bridge the physical
+        and digital world.
+      </p>
 
       <div class="hero-buttons">
         <a href="#" class="btn primary">Download Resume</a>
@@ -51,8 +51,15 @@
     </div>
 
     <div class="hero-image">
-      <img src="assets/images/profile.jpg" alt="Krithik Raj">
+      <img src="assets/images/profile.jpg" alt="Krithik Raj" />
+
+      <!-- SEEKING ROLE BADGE (BELOW IMAGE) -->
+      <div class="seeking-inline">
+        <span class="dot"></span>
+        Seeking Robotics & Automation Roles
+      </div>
     </div>
+
   </div>
 </section>
 
@@ -146,10 +153,6 @@
 
 <!-- FOOTER -->
 <footer class="footer">
-  <div class="social-links">
-    <a href="https://github.com/KrithikRajofficial" target="_blank">GitHub</a>
-    <a href="https://linkedin.com/in/krithikraj" target="_blank">LinkedIn</a>
-  </div>
   <p>© 2026 Krithik Raj</p>
 </footer>
 
