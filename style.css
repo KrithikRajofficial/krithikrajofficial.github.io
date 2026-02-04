@@ -19,29 +19,30 @@ body {
   pointer-events: none;
 }
 
-/* CURSOR GLOW — REDUCED / PREMIUM */
+/* CURSOR GLOW — ULTRA SUBTLE (FINAL) */
 .cursor-glow {
   position: fixed;
-  width: 220px;
-  height: 220px;
+  width: 140px;
+  height: 140px;
   pointer-events: none;
   border-radius: 50%;
 
   background: radial-gradient(
     circle,
-    rgba(140, 80, 240, 0.18) 0%,
-    rgba(80, 150, 255, 0.10) 35%,
-    rgba(0, 0, 0, 0) 70%
+    rgba(160, 110, 255, 0.22) 0%,
+    rgba(120, 170, 255, 0.10) 30%,
+    rgba(0, 0, 0, 0) 65%
   );
 
   transform: translate(-50%, -50%);
-  filter: blur(55px);
+  filter: blur(28px);
   mix-blend-mode: screen;
 
   z-index: 3;
   opacity: 0;
-  transition: opacity 0.25s ease;
+  transition: opacity 0.2s ease;
 }
+
 /* NAVBAR */
 .navbar {
   position: fixed;
