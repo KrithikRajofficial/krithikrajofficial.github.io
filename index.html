@@ -1,83 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Krithik Raj | Robotics & Automation</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <canvas id="starfield"></canvas>
-  <div class="mouse-glow" id="mouse-glow"></div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Krithik Raj | Robotics & Automation Engineer</title>
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="script.js"></script>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <div class="logo">KR<span class="dot">°</span></div>
+        <ul class="nav-links">
+          <li><a href="#">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#contact" class="btn contact-btn">Contact</a></li>
+        </ul>
+        <div class="toggle-switch">
+          <input type="checkbox" id="theme-toggle" />
+          <label for="theme-toggle"></label>
+        </div>
+      </nav>
+    </header>
 
-  <header class="navbar">
-    <div class="logo">KR<span class="dot">.</span></div>
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#experience">Experience</a>
-      <a href="#contact">Contact</a>
-    </nav>
-    <button id="theme-toggle">🌙</button>
-  </header>
+    <main class="home">
+      <section class="hero">
+        <div class="hero-left">
+          <span class="seeking-role">• Seeking Robotics & Automation Roles</span>
+          <h1>Krithik Raj</h1>
+          <h2>Robotics & Automation Engineer</h2>
+          <p>
+            Designing intelligent robotic systems that bridge the physical and digital world —
+            <strong>SLAM, ROS2, perception, and system design</strong>.
+          </p>
+          <div class="hero-buttons">
+            <a href="assets/resume/Krithik_Raj_Resume.pdf" class="btn pink-btn" target="_blank">Download Resume</a>
+            <a href="#projects" class="btn">Explore My Work</a>
+          </div>
+          <div class="hero-links">
+            <a href="mailto:krithikraj@email.com">krithikraj@email.com</a> ·
+            <a href="https://linkedin.com/in/krithikraj" target="_blank">LinkedIn</a> ·
+            <a href="https://github.com/krithikrajofficial" target="_blank">GitHub</a>
+          </div>
+          <div class="last-updated">Last updated: Feb 04, 2026</div>
+        </div>
 
-  <section class="hero" id="home">
-    <div class="content">
-      <p class="tagline">• Seeking Robotics & Automation Roles</p>
-      <h1>Krithik Raj</h1>
-      <h2>Robotics & Automation Engineer</h2>
-      <p class="summary">
-        Designing intelligent robotic systems that bridge the physical and digital world — SLAM, ROS2, perception, and system design.
-      </p>
-      <div class="cta-buttons">
-        <a href="assets/resume/Krithik_Raj_Resume.pdf" class="btn primary" target="_blank">Download Resume</a>
-        <a href="#projects" class="btn outline">Explore My Work</a>
-      </div>
-      <div class="links">
-        <a href="mailto:krithikraj@email.com">krithikraj@email.com</a> ·
-        <a href="https://linkedin.com" target="_blank">LinkedIn</a> ·
-        <a href="https://github.com" target="_blank">GitHub</a>
-      </div>
-      <div class="updated">Last updated: Feb 04, 2026</div>
-    </div>
-
-    <div class="profile-card">
-      <img src="assets/images/profile.jpg" alt="Profile" class="profile-img" />
-      <div class="role-pill">Seeking Roles</div>
-      <div class="education-box">
-        <div class="edu-item">
-          <img src="assets/images/uob_logo.png" alt="UoB Logo" />
-          <div>
-            <strong>MSc Robotics</strong><br>University of Birmingham
+        <div class="hero-right">
+          <div class="profile-glow">
+            <img src="assets/images/profile.jpg" alt="Krithik Raj Profile" class="profile-pic" />
+            <span class="role-badge">Seeking Roles</span>
+          </div>
+          <div class="education-box">
+            <h3>Education</h3>
+            <div class="edu-entry">
+              <img src="assets/images/uob_logo.png" alt="UoB Logo" />
+              <div>
+                <strong>MSc Robotics</strong>
+                <br />University of Birmingham
+              </div>
+            </div>
+            <div class="edu-entry">
+              <img src="assets/images/svce-logo.png" alt="SVCE Logo" />
+              <div>
+                <strong>B.E. Mechanical Engineering</strong>
+                <br />Sri Venkateswara College of Engineering
+              </div>
+            </div>
           </div>
         </div>
-        <div class="edu-item">
-          <img src="assets/images/svce-logo.png" alt="SVCE Logo" />
-          <div>
-            <strong>B.E. Mechanical Engineering</strong><br>Sri Venkateswara College of Engineering
+      </section>
+
+      <section id="about" class="about-section">
+        <div class="about-left">
+          <h2>About Me</h2>
+          <p>
+            I am a robotics and automation engineer with a background in mechanical engineering and hands-on
+            experience in autonomous systems, robotic simulation, and intelligent perception. My work focuses on
+            integrating software, hardware, and control systems to build reliable robotic solutions.
+          </p>
+          <p>
+            I have worked across domains such as ROS-based robotic systems, computer vision, SLAM, embedded
+            platforms, and simulation environments. I enjoy converting theoretical concepts into practical systems
+            through structured experimentation and iterative development.
+          </p>
+          <p>
+            My current interests include autonomous mobile robots, robotic perception, and research-driven
+            engineering, with a goal of contributing to advanced robotics research and industrial automation.
+          </p>
+
+          <div class="research">
+            <h3>Research & Publications</h3>
+            <ul>
+              <li>Paper 1 — Title from resume. (Peer-reviewed conference)</li>
+              <li>Paper 2 — Title from resume. (Journal)</li>
+            </ul>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
+      </section>
 
-  <section class="about-section" id="about">
-    <div class="about-text">
-      <h2>About Me</h2>
-      <p>
-        I am a robotics and automation engineer with a background in mechanical engineering and hands-on experience in autonomous systems, robotic simulation, and intelligent perception. My work focuses on integrating software, hardware, and control systems to build reliable robotic solutions.
-      </p>
-      <p>
-        I have worked across domains such as ROS-based robotic systems, computer vision, SLAM, embedded platforms, and simulation environments. I enjoy converting theoretical concepts into practical systems through structured experimentation and iterative development.
-      </p>
-      <p>
-        My current interests include autonomous mobile robots, robotic perception, and research-driven engineering, with a goal of contributing to advanced robotics research and industrial automation.
-      </p>
-    </div>
-  </section>
+      <!-- Additional sections: Skills, Projects, etc. will follow -->
 
-  <script src="script.js"></script>
-</body>
+    </main>
+
+    <canvas id="bg-canvas"></canvas>
+  </body>
 </html>
