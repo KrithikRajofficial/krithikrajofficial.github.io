@@ -1,215 +1,192 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Krithik Raj - Portfolio</title>
-  <link rel="stylesheet" href="styles.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Krithik Raj — Robotics & Automation</title>
+
+  <!-- main stylesheet -->
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Navigation bar -->
-  <nav class="navbar">
-    <div class="logo">Krithik Raj</div>
-    <div class="nav-links">
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#experience">Experience</a>
-      <a href="#certifications">Certifications</a>
-      <a href="#research">Research</a>
-      <a href="#awards">Awards</a>
-      <a href="#contact">Contact</a>
-    </div>
-    <div class="toggle-switch">
-      <input type="checkbox" id="theme-toggle" />
-      <label for="theme-toggle" class="switch"></label>
-    </div>
-  </nav>
+  <!-- starfield canvas -->
+  <canvas id="starfield" class="starfield"></canvas>
 
-  <!-- Hero section -->
-  <header id="hero">
-    <div class="hero-content">
-      <h1>Krithik Raj</h1>
-      <p class="title">Robotics &amp; AI Engineer</p>
-      <p class="tagline">Designing intelligent robotic systems that bridge the physical and digital world.</p>
-      <div class="hero-buttons">
-        <a href="#" class="btn primary">Download Resume</a>
-        <a href="#contact" class="btn secondary">Contact Me</a>
-      </div>
-      <div class="hero-contact">
-        <p>Email: <a href="mailto:krithik870@gmail.com">krithik870@gmail.com</a></p>
-        <p>LinkedIn: <a href="https://www.linkedin.com/in/krithikraj" target="_blank">linkedin.com/in/krithikraj</a></p>
-        <p>GitHub: <a href="https://github.com/KrithikRajOfficial" target="_blank">KrithikRajOfficial</a></p>
-        <p class="updated">Last updated: February 4, 2026</p>
-      </div>
-    </div>
-    <div class="hero-image">
-      <!-- Placeholder for profile image -->
-      <img src="profile.jpg" alt="Krithik Raj Profile">
+  <!-- mouse glow overlay -->
+  <div id="mouse-glow" class="mouse-glow"></div>
+
+  <!-- site header / nav -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#home">KR<span class="dot">°</span></a>
+
+      <nav class="main-nav">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact" class="btn-contact">Contact</a>
+      </nav>
+
+      <button id="theme-toggle" class="theme-toggle" title="Toggle theme">🌙</button>
     </div>
   </header>
 
-  <!-- About section -->
-  <section id="about">
-    <h2>About Me</h2>
-    <p class="subtitle">Innovator // Robotics Enthusiast // Engineer</p>
-    <div class="about-content">
-      <div class="about-text">
-        <p>Innovative Mechanical Engineering graduate with expertise in autonomous systems, AI integration, and sustainable technology. Proven track record in leading multi-disciplinary projects from conceptualization to implementation, with published research and award-winning innovations.</p>
-        <p>Experienced in UAV systems, electric vehicle design, and IoT-based automation, with strong leadership and technical presentation skills.</p>
-      </div>
-      <div class="about-education">
-        <h3>Education</h3>
-        <div class="education-card">
-          <i class="fas fa-graduation-cap"></i>
-          <div>
-            <p><strong>B.E., Mechanical Engineering</strong></p>
-            <p>Sri Venkateswara College of Engineering, Chennai</p>
-            <p>(2021-2025)</p>
-          </div>
+  <!-- HERO / HOME -->
+  <main>
+    <section id="home" class="hero container">
+      <div class="hero-left">
+        <p class="seeking">• <span>Seeking Robotics &amp; Automation Roles</span></p>
+        <h1 class="name">Krithik Raj</h1>
+        <h2 class="role">Robotics &amp; Automation Engineer</h2>
+
+        <p class="hero-desc">
+          Designing intelligent robotic systems that bridge the physical and digital world — SLAM, ROS2, perception, and system design.
+        </p>
+
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="assets/resume/Krithik_Raj_Resume.pdf" target="_blank" rel="noopener">Download Resume</a>
+          <a class="btn btn-outline" href="#projects">Explore My Work</a>
         </div>
-        <div class="education-card">
-          <i class="fas fa-graduation-cap"></i>
-          <div>
-            <p><strong>M.Sc., Robotics</strong></p>
-            <p>University of Birmingham, UK (Joint Program)</p>
-            <p>(Starting Sep 2025)</p>
-          </div>
+
+        <p class="contact-line">
+          <a href="mailto:krithikraj@email.com">krithikraj@email.com</a>
+          · <a href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a>
+          · <a href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
+        </p>
+
+        <div class="last-updated">Last updated: <strong>Feb 04, 2026</strong></div>
+      </div>
+
+      <div class="hero-right">
+        <div class="profile-wrap">
+          <img src="assets/images/profile.jpg" alt="Krithik Raj" class="profile-img" />
+          <div class="role-pill">Seeking Roles</div>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- Skills section -->
-  <section id="skills">
-    <h2>Skills</h2>
-    <p class="subtitle">My Engineering Toolkit</p>
-    <div class="skills-cards">
-      <div class="skill-card">
-        <i class="fas fa-cube"></i>
-        <h3>3D Modeling &amp; Tools</h3>
-        <p>CATIA V5, Fusion 360, SolidWorks, Creo, AutoCAD, Git &amp; GitHub, Ubuntu, VS Code</p>
+        <aside class="education-card">
+          <h3>Education</h3>
+          <ul>
+            <li>
+              <img src="assets/images/uob_logo.png" alt="University of Birmingham" />
+              <div>
+                <strong>MSc Robotics</strong><br /><span>University of Birmingham</span>
+              </div>
+            </li>
+            <li>
+              <img src="assets/images/svce-logo.png" alt="SVCE" />
+              <div>
+                <strong>B.E. Mechanical Engineering</strong><br /><span>Sri Venkateswara College of Engineering</span>
+              </div>
+            </li>
+          </ul>
+        </aside>
       </div>
-      <div class="skill-card">
-        <i class="fas fa-code"></i>
-        <h3>Programming &amp; AI/ML</h3>
-        <p>Python, C, SQL, TensorFlow, OpenCV, YOLOv5, Neural Networks, Pandas, NumPy, Matplotlib</p>
-      </div>
-      <div class="skill-card">
-        <i class="fas fa-cogs"></i>
-        <h3>Simulation &amp; Analysis</h3>
-        <p>MATLAB/Simulink, CFD, Finite Element Analysis, Data Analysis, Predictive Modeling</p>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Projects section -->
-  <section id="projects">
-    <h2>Projects</h2>
-    <p class="subtitle">Applying theory to practice</p>
-    <div class="project-cards">
-      <!-- Project 1 -->
-      <div class="project-card">
-        <img src="drone_project.jpg" alt="Autonomous Drone">
-        <h3>Autonomous Drone for Object Detection</h3>
-        <p>Developed an AI-enabled autonomous drone for real-time object detection and tracking, integrating advanced vision modules and path-planning algorithms. Focused on enhancing efficiency and safety of aerial operations.</p>
+    <!-- ABOUT with education placed beside (same content repeated concisely) -->
+    <section id="about" class="about container">
+      <div class="about-left">
+        <h2>About Me</h2>
+        <p>
+          I am a robotics and automation engineer with a background in mechanical engineering and hands-on experience in autonomous systems, robotic simulation, and intelligent perception.
+          My work focuses on integrating software, hardware, and control systems to build reliable robotic solutions.
+        </p>
+
+        <p>
+          I have worked across ROS-based robotic systems, computer vision, SLAM, embedded platforms, and simulation environments. I enjoy converting theoretical concepts into practical systems through structured experimentation and iterative development.
+        </p>
+
+        <p>
+          Current interests: autonomous mobile robots, robotic perception, and research-driven engineering.
+        </p>
       </div>
-      <!-- Project 2 -->
-      <div class="project-card">
-        <img src="pill_dispenser.jpg" alt="Pill Dispenser">
-        <h3>Automatic Pill Dispenser</h3>
-        <p>Designed and fabricated an automatic pill dispenser to revolutionize medication management, providing timely reminders and precise dosage administration. Customized features for individual medication schedules.</p>
-      </div>
-      <!-- Project 3 -->
-      <div class="project-card">
-        <img src="ebike.jpg" alt="Electric E-Bike">
-        <h3>Electric E-Bike Design</h3>
-        <p>Led the design of a rear-drive electric bicycle for optimized weight distribution and efficiency. Conducted power and torque calculations to meet performance requirements, winning an Innovation Award.</p>
-      </div>
-      <!-- Project 4 -->
-      <div class="project-card">
-        <img src="multi_drone.jpg" alt="Multi-Drone Formation">
-        <h3>Multi-Drone Formation for Construction Safety</h3>
-        <p>Co-developed a multi-agent quadrotor formation framework using cascaded PID control, MQTT coordination, and vision-based hazard detection. Implemented a leader-follower architecture for fire hazard monitoring on construction sites.</p>
-      </div>
-    </div>
-  </section>
 
-  <!-- Certifications section -->
-  <section id="certifications">
-    <h2>Certifications</h2>
-    <p class="subtitle">Certifications Coming Soon</p>
-    <p>Links to certificates will be added shortly.</p>
-  </section>
-
-  <!-- Research & Publications section -->
-  <section id="research">
-    <h2>Research & Publications</h2>
-    <p class="subtitle">Peer-Reviewed Publications</p>
-    <ul>
-      <li><a href="https://doi.org/10.2991/978-94-6463-662-8_84" target="_blank">A. Krithik Raj et al.</a>, "Artificial Intelligence-based Autonomous Pesticide Spraying Drone Management for Sustainable Agriculture", ICAMMSD 2024 Proceedings, 2025.</li>
-      <li><a href="https://doi.org/10.61552/JME.2025.02.010" target="_blank">A. Krithik Raj et al.</a>, "Prediction of Tribological Characteristics of Biomaterials Using Artificial Neural Networks", Journal of Materials and Engineering, 2025.</li>
-    </ul>
-  </section>
-
-  <!-- Experience section -->
-  <section id="experience">
-    <h2>Experience</h2>
-    <div class="experience-item">
-      <h3>Technical Trainee, Schneider Electric Pvt Ltd</h3>
-      <p>Collaborated with the R&amp;D team on electrical systems testing and product development. Gained expertise in automation technologies, control systems, and technical testing procedures.</p>
-    </div>
-    <div class="experience-item">
-      <h3>Industrial Trainee, Hyundai Motor India Ltd</h3>
-      <p>Acquired hands-on experience in supply chain management, production optimization, and lean manufacturing. Studied advanced engine manufacturing processes and quality control systems.</p>
-    </div>
-  </section>
-
-  <!-- Awards & Recognition section -->
-  <section id="awards">
-    <h2>Awards &amp; Recognition</h2>
-    <ul>
-      <li>Vice President - Society of Mechanical Engineers (2024-2025)</li>
-      <li>Innovation Award - SIEP E-bike Challenge, Bopal (2024)</li>
-      <li>College-Level Shortlist - Smart India Hackathon (Rescue Drone, 2023)</li>
-    </ul>
-  </section>
-
-  <!-- Contact section -->
-  <section id="contact">
-    <h2>Contact</h2>
-    <div class="contact-content">
-      <!-- Contact info -->
-      <div class="contact-info">
-        <h3>Let's build something amazing</h3>
-        <p>Ready to discuss robotics, AI, or potential collaborations? I'd love to hear from you!</p>
-        <div class="info-cards">
-          <div><i class="fas fa-envelope"></i> <a href="mailto:krithik870@gmail.com">krithik870@gmail.com</a></div>
-          <div><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/krithikraj" target="_blank">linkedin.com/in/krithikraj</a></div>
-          <div><i class="fab fa-github"></i> <a href="https://github.com/KrithikRajOfficial" target="_blank">github.com/KrithikRajOfficial</a></div>
+      <div class="about-right">
+        <div class="quick-facts">
+          <h3>Quick facts</h3>
+          <ul>
+            <li>6+ Major Projects</li>
+            <li>3+ Years Experience (Robotics R&amp;D)</li>
+            <li>Innovation Award — SIEP E-bike Challenge (2024)</li>
+            <li>2 peer-reviewed publications</li>
+          </ul>
         </div>
       </div>
-      <!-- Contact form -->
-      <div class="contact-form">
-        <form>
-          <label for="name">Full Name*</label>
-          <input type="text" id="name" name="name" required>
-          <label for="email">Email Address*</label>
-          <input type="email" id="email" name="email" required>
-          <label for="subject">Subject*</label>
-          <input type="text" id="subject" name="subject" required>
-          <label for="message">Message*</label>
-          <textarea id="message" name="message" rows="4" required></textarea>
-          <button type="submit" class="btn primary">Send Message</button>
-        </form>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Scroll to Top Button -->
-  <button id="scrollTopBtn" title="Go to top">↑</button>
+    <!-- placeholder skills/projects/experience/contact sections for navigation -->
+    <section id="skills" class="container small-section">
+      <h2>Technical Skills</h2>
+      <div class="skill-grid">
+        <div class="skill-card">
+          <h4>3D Modelling &amp; Tools</h4>
+          <p>CATIA V5 · Fusion 360 · SolidWorks · Creo · AutoCAD · Git · Ubuntu · VS Code</p>
+        </div>
+        <div class="skill-card">
+          <h4>Programming</h4>
+          <p>Python · C / C++ · SQL · HTML · CSS · JavaScript</p>
+        </div>
+        <div class="skill-card">
+          <h4>Vision &amp; Perception</h4>
+          <p>SLAM · YOLO · OpenCV</p>
+        </div>
+        <div class="skill-card">
+          <h4>Robotics</h4>
+          <p>ROS2 Humble · Gazebo · RViz · ESP32 · Arduino · Pixhawk</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="container small-section">
+      <h2>Research &amp; Projects</h2>
+      <div class="projects-grid">
+        <article class="project-card">
+          <h4>Autonomous E-Bike System</h4>
+          <p>End-to-end e-bike project — mechanical + embedded control + path planning.</p>
+        </article>
+        <article class="project-card">
+          <h4>Rescue Drone — SIH</h4>
+          <p>Search-and-rescue drone built with vision-based detection and autonomous navigation.</p>
+        </article>
+        <article class="project-card">
+          <h4>Autonomous UAV (Final Year)</h4>
+          <p>UAV platform with person-following and mission planning.</p>
+        </article>
+        <article class="project-card">
+          <h4>Webots Mobile Robot</h4>
+          <p>ROS2 + Webots simulation stack for mobile robot tasks.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="experience" class="container small-section">
+      <h2>Experience</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <h4>Research Associate — Extreme Robotics Lab (NCNR)</h4>
+          <p>Autonomous robotics research, simulation &amp; system design.</p>
+        </div>
+        <div class="timeline-item">
+          <h4>Intern — Brakes India / TCS</h4>
+          <p>R&amp;D and industrial design internships.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="container small-section">
+      <h2>Get in touch</h2>
+      <p>Interested in robotics research, industry roles, or collaboration? Let’s connect.</p>
+      <p><a href="mailto:krithikraj@email.com">krithikraj@email.com</a> · <a href="#">LinkedIn</a> · <a href="#">GitHub</a></p>
+    </section>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div>© 2026 Krithik Raj</div>
+      </div>
+    </footer>
+  </main>
 
   <script src="script.js"></script>
 </body>
